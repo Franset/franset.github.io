@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FRANSET STUDIOS</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'RFDewiExpandedBold', sans-serif;
+    background-color: #f0f0f0;
+    color: #000;
+  }
+
+  /* Хедер — слева с логотипом и навигацией */
+  .header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #222;
+  }
+
+  .logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 50px;
+  }
+
+  /* Навигация — переносим в центр, делаем жирным шрифт */
+  .navigation {
+    display: flex;
+    gap: 30px;
+    margin-left: auto; /* чтобы разместить навигацию по центру контейнера */
+  }
+
+  /* Чтобы центрировать весь блок навигации внутри хедера */
+  .header {
+    justify-content: center; /* центрируем содержимое хедера */
+  }
+
+  /* Внутри навигации делаем флекс-ряд */
+  .navigation a {
+    margin-right: 100px;
+    color: #fff;
+    text-decoration: none;
+    font-variant: small-caps;
+    font-size: 32px;
+    font-weight: bold; /* делаем жирным */
+  }
+
+  /* Основной блок */
+  .main {
+    padding: 40px 20px;
+  }
+
+  /* Контейнер для контента */
+  .content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%; /* занимает всю ширину */
+    flex-wrap: wrap;
+  }
+
+  /* Левая секция */
+  .left-section {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-section h1 {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #222;
+    margin-bottom: 20px;
+  }
+
+  .telegram-button {
+    margin-left: 100px;
+    padding: 15px 30px;
+    background-color: #ff69b4;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'RFDewiExpandedBold', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+  }
+
+  .telegram-button:hover {
+    background-color: #e055a1;
+  }
+
+  /* Правая секция */
+  .right-section {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .minecraft-image-container {
+    max-width: 100%;
+  }
+
+  .minecraft-character {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    box-shadow: none;
+    border-radius: 102px;
+  }
+
+  /* Адаптивность */
+  @media(max-width: 768px) {
+    .content-container {
+      flex-direction: column;
+    }
+    .left-section,
+    .right-section {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+    .minecraft-character {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">FRANSET STUDIOS</div>
+  <!-- Навигация расположена справа, но внутри хедера — чтобы центрировать весь хедер, делаем justify-content: center -->
+  <nav class="navigation">
+    <a href="#">НОВОСТИ</a>
+    <a href="#">ТОВАРЫ</a>
+    <a href="#">ОТЗЫВЫ</a>
+  </nav>
+</header>
+
+<main class="main">
+  <div class="content-container">
+    <div class="left-section">
+      <h1>FRANSET STUDIOS — СТУДИЯ ПО СОЗДАНИЮ КОНТЕНТА ДЛЯ MINECRAFT-СЕРВЕРОВ</h1>
+      <a class="telegram-button" href="#">НАШ ТЕЛЕГРАМ</a>
+    </div>
+    <div class="right-section">
+      <div class="minecraft-image-container">
+        <img src="images/minecraft_character.png" alt="Minecraft персонаж" class="minecraft-character" />
+      </div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
