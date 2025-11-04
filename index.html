@@ -1,164 +1,437 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FRANSET STUDIOS</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'RFDewiExpandedBold', sans-serif;
-    background-color: #f0f0f0;
-    color: #000;
-  }
-
-  /* Хедер — слева с логотипом и навигацией */
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #222;
-  }
-
-  .logo {
-    font-size: 40px;
-    font-weight: bold;
-    color: #fff;
-    margin-left: 50px;
-  }
-
-  /* Навигация — переносим в центр, делаем жирным шрифт */
-  .navigation {
-    display: flex;
-    gap: 30px;
-    margin-left: auto; /* чтобы разместить навигацию по центру контейнера */
-  }
-
-  /* Чтобы центрировать весь блок навигации внутри хедера */
-  .header {
-    justify-content: center; /* центрируем содержимое хедера */
-  }
-
-  /* Внутри навигации делаем флекс-ряд */
-  .navigation a {
-    margin-right: 100px;
-    color: #fff;
-    text-decoration: none;
-    font-variant: small-caps;
-    font-size: 32px;
-    font-weight: bold; /* делаем жирным */
-  }
-
-  /* Основной блок */
-  .main {
-    padding: 40px 20px;
-  }
-
-  /* Контейнер для контента */
-  .content-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%; /* занимает всю ширину */
-    flex-wrap: wrap;
-  }
-
-  /* Левая секция */
-  .left-section {
-    flex: 1 1 45%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .left-section h1 {
-    font-size: 2em;
-    font-weight: bold;
-    line-height: 1.4;
-    color: #222;
-    margin-bottom: 20px;
-  }
-
-  .telegram-button {
-    margin-left: 100px;
-    padding: 15px 30px;
-    background-color: #ff69b4;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-family: 'RFDewiExpandedBold', sans-serif;
-    font-size: 1.2em;
-    text-align: center;
-    transition: background-color 0.3s;
-    align-self: flex-start;
-  }
-
-  .telegram-button:hover {
-    background-color: #e055a1;
-  }
-
-  /* Правая секция */
-  .right-section {
-    flex: 1 1 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .minecraft-image-container {
-    max-width: 100%;
-  }
-
-  .minecraft-character {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    box-shadow: none;
-    border-radius: 102px;
-  }
-
-  /* Адаптивность */
-  @media(max-width: 768px) {
-    .content-container {
-      flex-direction: column;
-    }
-    .left-section,
-    .right-section {
-      flex: 1 1 100%;
-      text-align: center;
-    }
-    .minecraft-character {
-      max-width: 100%;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franset Studios - Разработка сборок и плагинов для Minecraft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #ff1493;
+            --secondary-pink: #ff69b4;
+            --light-pink: #fff0f5;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --accent-gradient: linear-gradient(135deg, var(--secondary-pink), var(--primary-pink));
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-pink);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x400/ff69b4/ffffff?text=Minecraft+Background') no-repeat center/cover; /* Замените на реальное изображение Minecraft-тематики */
+            opacity: 0.15;
+            z-index: 0;
+            animation: subtleZoom 20s ease-in-out infinite alternate;
+        }
+        header > * {
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin: 0;
+            animation: fadeInDown 1.2s ease-out;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        header p {
+            font-size: 1.4em;
+            margin: 20px 0 0;
+            animation: fadeInUp 1.2s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        nav {
+            background-color: rgba(255, 182, 193, 0.95);
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px var(--shadow);
+            transition: background 0.3s ease, padding 0.3s ease;
+        }
+        nav.scrolled {
+            background-color: var(--secondary-pink);
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            transition: max-height 0.3s ease;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        nav a:hover {
+            color: var(--light-pink);
+            transform: translateY(-2px);
+        }
+        .burger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: var(--white);
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #intro {
+            text-align: center;
+        }
+        h2 {
+            color: var(--primary-pink);
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 2em;
+        }
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent-gradient);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        #projects, #team, #contact {
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px var(--shadow);
+            padding: 40px;
+            margin-bottom: 60px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        #projects:hover, #team:hover, #contact:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .project-list li {
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px var(--shadow);
+            text-align: center;
+        }
+        .project-list li:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        .project-list li a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        .team-member {
+            text-align: center;
+            background: var(--accent-gradient);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+        .team-member h3 {
+            color: var(--white);
+            margin: 15px 0 10px;
+        }
+        #contact p {
+            text-align: center;
+            font-size: 1.1em;
+        }
+        #contact a {
+            color: var(--primary-pink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #contact a:hover {
+            color: var(--secondary-pink);
+        }
+        footer {
+            background: var(--accent-gradient);
+            color: var(--white);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95em;
+            position: relative;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px var(--shadow);
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes subtleZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { padding: 60px 15px; }
+            nav { text-align: left; }
+            .burger { display: block; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: var(--secondary-pink);
+                padding: 20px 0;
+                max-height: 0;
+                overflow: hidden;
+            }
+            nav ul.active {
+                display: flex;
+                max-height: 300px; /* Adjust as needed */
+            }
+            nav li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            nav a { margin: 10px 0; display: block; }
+            .project-list { grid-template-columns: 1fr; }
+            .modal-content { width: 90%; }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Franset Studios</h1>
+        <p>Разработка сборок и плагинов для Minecraft на заказ</p>
+    </header>
+    
+    <nav>
+        <div class="burger"><i class="fas fa-bars"></i></div>
+        <ul>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#team">Команда</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <section id="intro">
+        <h2>Добро пожаловать в Franset Studios!</h2>
+        <p>Мы специализируемся на создании кастомных сборок и плагинов для Minecraft. Если вам нужны уникальные решения для вашего сервера, свяжитесь с нами!</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Наши проекты</h2>
+        <p>Здесь отображаются наши завершенные и текущие проекты. Кликните на проект для деталей.</p>
+        <ul class="project-list">
+            <li onclick="openModal('project1Modal')">Проект 1: Кастомная сборка для сервера выживания (в разработке)</li>
+            <li onclick="openModal('project2Modal')">Проект 2: Плагин для экономики (завершен)</li>
+            <!-- Добавьте больше элементов списка по необходимости -->
+        </ul>
+    </section>
+    
+    <section id="team">
+        <h2>Наша команда</h2>
+        <div class="team-member">
+            <h3>KelsiDev</h3>
+            <p>Владелец студии и главный разработчик</p>
+        </div>
+        <!-- Добавьте больше членов команды по мере роста -->
+    </section>
+    
+    <section id="contact">
+        <h2>Контакты</h2>
+        <p>Свяжитесь с нами по email: <a href="mailto:info@fransetstudios.com">info@fransetstudios.com</a> или через Discord: KelsiDev#1234</p>
+        <!-- Замените на реальные контакты -->
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Franset Studios. Все права защищены.</p>
+    </footer>
 
-<header class="header">
-  <div class="logo">FRANSET STUDIOS</div>
-  <!-- Навигация расположена справа, но внутри хедера — чтобы центрировать весь хедер, делаем justify-content: center -->
-  <nav class="navigation">
-    <a href="#">НОВОСТИ</a>
-    <a href="#">ТОВАРЫ</a>
-    <a href="#">ОТЗЫВЫ</a>
-  </nav>
-</header>
-
-<main class="main">
-  <div class="content-container">
-    <div class="left-section">
-      <h1>FRANSET STUDIOS — СТУДИЯ ПО СОЗДАНИЮ КОНТЕНТА ДЛЯ MINECRAFT-СЕРВЕРОВ</h1>
-      <a class="telegram-button" href="#">НАШ ТЕЛЕГРАМ</a>
+    <!-- Modals for Projects -->
+    <div id="project1Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1Modal')">&times;</span>
+            <h2>Проект 1: Кастомная сборка для сервера выживания</h2>
+            <p>Описание: Это кастомная сборка, включающая моды на выживание, такие как новые биомы, инструменты и монстры. Статус: В разработке.</p>
+            <p>Детали: Здесь можно добавить больше информации, скриншоты или ссылки.</p>
+        </div>
     </div>
-    <div class="right-section">
-      <div class="minecraft-image-container">
-        <img src="images/minecraft_character.png" alt="Minecraft персонаж" class="minecraft-character" />
-      </div>
-    </div>
-  </div>
-</main>
 
+    <div id="project2Modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2Modal')">&times;</span>
+            <h2>Проект 2: Плагин для экономики</h2>
+            <p>Описание: Плагин для управления экономикой на сервере, включая валюту, магазины и торговлю. Статус: Завершен.</p>
+            <p>Детали: Здесь можно добавить больше информации, скриншоты или ссылки.</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('section');
+        const options = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+        sections.forEach(section => observer.observe(section));
+
+        // Nav background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Burger menu
+        const burger = document.querySelector('.burger');
+        const navUl = document.querySelector('nav ul');
+        burger.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
